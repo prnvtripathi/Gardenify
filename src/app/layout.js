@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import './globals.css'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import Navbar from '@/components/Navbar'
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,22 +12,7 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <nav>
-          <div className='brand-container'>
-            <Link href='/'><h2 className='brand'>Gardenify</h2></Link>
-          </div>
-          <div>
-            <ul className='nav-links'>
-              <Link href='/'><li className='nav-link'>Home</li></Link>
-              <Link href='/about'><li className='nav-link'>About</li></Link>
-              <Link href='/explore'><li className='nav-link'>Explore</li></Link>
-            </ul>
-          </div>
-          <div className='cart-login'>
-            <Link href='/cart'><AiOutlineShoppingCart size={24}/></Link>
-            <Link href='/login' className='login-button'>Login</Link>
-          </div>
-        </nav>
+        <Navbar />
         {children}
       </body>
     </html>
