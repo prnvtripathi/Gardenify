@@ -119,6 +119,12 @@ a {
 
 /* Product Section */
 
+.products-section h2 {
+    font-size: 2.5rem;
+    margin: 1rem auto;
+    text-align: center;
+}
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -131,11 +137,13 @@ a {
     margin-bottom: 2rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
 .product-card h3 {
@@ -159,6 +167,11 @@ a {
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-actions button:hover {
+    background-color: #2ecc7180;
 }
 
 .product-actions button.add-to-wishlist {

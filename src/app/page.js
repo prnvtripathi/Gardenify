@@ -1,5 +1,6 @@
 "use client"
 
+import './globals.css'
 import { useState } from "react"
 import Carousel from "@/components/Carousel"
 import ProductCard from "@/components/ProductCard"
@@ -12,20 +13,56 @@ const Home = () => {
     {
       id: 1,
       name: 'Plant 1',
-      price: 10,
-      image: '/assets/plant1.png'
+      price: 100,
+      image: '/images/plant1.png'
     },
     {
       id: 2,
       name: 'Plant 2',
-      price: 15,
-      image: '/path/to/plant2.jpg'
+      price: 120,
+      image: '/images/plant2.png'
     },
     {
       id: 3,
       name: 'Plant 3',
-      price: 20,
-      image: '/path/to/plant3.jpg'
+      price: 200,
+      image: '/images/plant3.png'
+    },
+    {
+      id: 4,
+      name: 'Plant 1',
+      price: 100,
+      image: '/images/plant1.png'
+    },
+    {
+      id: 5,
+      name: 'Plant 2',
+      price: 120,
+      image: '/images/plant2.png'
+    },
+    {
+      id: 6,
+      name: 'Plant 3',
+      price: 200,
+      image: '/images/plant3.png'
+    },
+    {
+      id: 7,
+      name: 'Plant 1',
+      price: 100,
+      image: '/images/plant1.png'
+    },
+    {
+      id: 8,
+      name: 'Plant 2',
+      price: 120,
+      image: '/images/plant2.png'
+    },
+    {
+      id: 9,
+      name: 'Plant 3',
+      price: 200,
+      image: '/images/plant3.png'
     }
   ];
 
