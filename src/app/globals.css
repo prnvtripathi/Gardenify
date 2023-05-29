@@ -341,16 +341,25 @@ footer {
 
 .login-page input[type="email"],
 .login-page input[type="password"] {
-    width: 100%;
+    width: 70%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page input[type="email"]:focus,
+.login-page input[type="password"]:focus {
+    outline: none;
+    border-color: #2ecc71;
+    width: 100%;
 }
 
 .login-page button {
     display: block;
-    width: 100%;
+    width: 50%;
+    margin: auto;
     padding: 0.75rem;
     background-color: #2ecc71;
     color: #fff;
@@ -359,24 +368,42 @@ footer {
     cursor: pointer;
 }
 
-.login-page button:not(:last-child) {
-    margin-bottom: 0.5rem;
-}
-
 .login-page button:hover {
     background-color: #27ae60;
 }
 
 .login-page .social-login-buttons {
+    margin: 1rem auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.login-page .social-login-buttons button {
-    flex: 1;
-    margin-right: 0.5rem;
+.social-login-buttons button {
+    margin: 0.5rem;
 }
 
-.login-page .social-login-buttons button:last-child {
-    margin-right: 0;
+.login-page hr {
+    margin: 1rem;
+    border: none;
+    border-bottom: #00000050 3px solid;
+}
+
+.login-page hr:hover {
+    border-bottom: #00000050 3px dashed;
+}
+
+.login-page .register-link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-page .register-link a {
+    color: #2ecc71;
+    text-decoration: none;
+}
+
+.login-page .register-link a:hover {
+    text-decoration: underline;
 }

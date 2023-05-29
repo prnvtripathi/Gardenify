@@ -1,5 +1,8 @@
 "use client"
 
+import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
+import Link from "next/link";
+
 const Login = () => {
     const handleEmailLogin = () => {
         // Handle email login logic
@@ -23,18 +26,20 @@ const Login = () => {
             <div>
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" />
-            </div>
-            <div>
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" />
             </div>
             <div>
                 <button onClick={handleEmailLogin}>Login</button>
             </div>
-            <div>
-                <button onClick={handleGoogleLogin}>Login with Google</button>
-                <button onClick={handleFacebookLogin}>Login with Facebook</button>
-                <button onClick={handleTwitterLogin}>Login with Twitter</button>
+            <hr />
+            <div className="social-login-buttons">
+                <button onClick={handleGoogleLogin}>Login with <FaGoogle /></button>
+                <button onClick={handleFacebookLogin}>Login with <FaFacebook /></button>
+                <button onClick={handleTwitterLogin}>Login with <FaTwitter /></button>
+            </div>
+            <div className="register-link">
+                <p>New here? <Link href='/signup'>Register now.</Link></p>
             </div>
         </div>
     );
