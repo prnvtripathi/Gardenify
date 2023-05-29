@@ -25,8 +25,10 @@ const Navbar = () => {
             </ul>
             <div className="cart-section">
                 <div>
-                    <span className="cart-count">{cartCount}</span>
-                    <AiOutlineShoppingCart size={20}/>
+                    <Link href='/cart'>
+                        <span className="cart-count">{cartCount}</span>
+                        <AiOutlineShoppingCart size={20} />
+                    </Link>
                 </div>
                 <div>
                     <Link href='/login' className='login-button' onClick={handleLogin}>Login</Link>
