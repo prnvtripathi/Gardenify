@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const CartPage = () => {
     const [cartItems, setCartItems] = useState([
@@ -9,19 +10,19 @@ const CartPage = () => {
             id: 1,
             name: 'Plant 1',
             price: 10,
-            image: '/path/to/plant1.jpg'
+            image: '/images/plant1.png'
         },
         {
             id: 2,
             name: 'Plant 2',
             price: 15,
-            image: '/path/to/plant2.jpg'
+            image: '/images/plant2.png'
         },
         {
             id: 3,
             name: 'Plant 3',
             price: 20,
-            image: '/path/to/plant3.jpg'
+            image: '/images/plant3.png'
         }
     ]);
 
@@ -39,8 +40,8 @@ const CartPage = () => {
     };
 
     return (
-        <div>
-            <h2>Your Cart</h2>
+        <div className='cart-page'>
+            <h2>Your Cart <AiOutlineShoppingCart /></h2>
             {cartItems.length === 0 ? (
                 <p>No items in your cart.</p>
             ) : (
@@ -60,7 +61,7 @@ const CartPage = () => {
                         ))}
                     </ul>
                     <div className="cart-total">
-                        <p>Total: ${calculateTotalPrice()}</p>
+                        <h3>Total: ${calculateTotalPrice()}</h3>
                         <Link href="/payment" className='checkout-button'>
                             Checkout
                         </Link>
