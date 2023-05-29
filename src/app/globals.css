@@ -186,6 +186,12 @@ a {
 
 /* Wishlist Page */
 
+.wishlist-page h2 {
+    font-size: 2.5rem;
+    margin: 1rem auto;
+    text-align: center;
+}
+
 .wishlist-items {
     list-style: none;
     padding: 0;
@@ -217,6 +223,10 @@ a {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 0.5rem;
+}
+
+.wishlist-item-actions button:hover {
+    background-color: #2ecc7180;
 }
 
 /* Cart Page */
