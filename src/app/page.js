@@ -13,7 +13,7 @@ const Home = () => {
       id: 1,
       name: 'Plant 1',
       price: 10,
-      image: '/path/to/plant1.jpg'
+      image: '/assets/plant1.png'
     },
     {
       id: 2,

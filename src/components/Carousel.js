@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 const Carousel = () => {
@@ -7,16 +8,16 @@ const Carousel = () => {
 
     const slides = [
         {
-            image: '/assets/plant1.png',
-            legend: 'Offer 1'
+            image: '/images/plant1.png',
+            legend: '20% OFF on your first purchase'
         },
         {
-            image: '/assets/plant2.png',
-            legend: 'Offer 2'
+            image: '/images/plant2.png',
+            legend: 'Get a pot free if you buy 2 plants'
         },
         {
-            image: '/assets/plant3.png',
-            legend: 'Offer 3'
+            image: '/images/plant3.png',
+            legend: 'Special offer on Cactus plants'
         }
     ];
 
@@ -24,10 +25,6 @@ const Carousel = () => {
 
     const goToNextSlide = () => {
         setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
-    };
-
-    const goToPrevSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide - 1 + totalSlides) % totalSlides);
     };
 
     useEffect(() => {
@@ -40,19 +37,10 @@ const Carousel = () => {
             <div className="carousel">
                 {slides.map((slide, index) => (
                     <div key={index} className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}>
-                        <img src={slide.image} alt={`Plant ${index + 1}`} />
-                        <p className="legend">{slide.legend}</p>
+                        <Image src={slide.image} alt={`Plant ${index + 1}`} width={300} height={300} />
+                        <h2 className="legend">{slide.legend}</h2>
                     </div>
                 ))}
-            </div>
-
-            <div className="carousel-controls">
-                <button className="prev-slide" onClick={goToPrevSlide}>
-                    &lt;
-                </button>
-                <button className="next-slide" onClick={goToNextSlide}>
-                    &gt;
-                </button>
             </div>
         </div>
     );
