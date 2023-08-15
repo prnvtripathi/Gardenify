@@ -11,7 +11,6 @@ const montserrat = Montserrat({
 })
 
 const Home = ({ product }) => {
-  console.log(product)
   return (
     <>
       <Head>
