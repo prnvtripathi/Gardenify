@@ -1,10 +1,19 @@
+import Featured from "@/components/Featured"
 import Header from "@/components/Header"
+import Head from "next/head"
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-    </div>
+    <>
+    <Head>
+      <title>Gardenify | Home</title>
+    </Head>
+      <div>
+        <Header />
+        <Featured />
+      </div>
+    </>
+
   )
 }
 
