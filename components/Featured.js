@@ -63,7 +63,7 @@ const Featured = ({ product }) => {
                         </div>
                     </Column>
                     <Column>
-                        <img src={product.images[0]} alt="featured" />
+                        <img src={product.images} alt="featured" />
                     </Column>
                 </ColumnsWrapper>
 
