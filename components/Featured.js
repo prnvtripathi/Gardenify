@@ -23,17 +23,18 @@ const Desc = styled.p`
 
 const ColumnsWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.25rem;
-
-    img {
-        max-width: 100%;
-    }
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
 `
 
 const Column = styled.div`
     display: flex;
     align-items: center;
+    img {
+        max-width: 100%;
+        border-radius: 0.5rem;
+        width: 70%;
+    }
 `
 
 const ButtonWrapper = styled.div`
@@ -63,7 +64,7 @@ const Featured = ({ product }) => {
                         </div>
                     </Column>
                     <Column>
-                        <img src={product.images} alt="featured" />
+                        <img src={product.images[0]} alt="featured" />
                     </Column>
                 </ColumnsWrapper>
 
