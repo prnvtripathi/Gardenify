@@ -2,6 +2,8 @@ import { styled } from "styled-components"
 import Center from "./Center"
 import Link from "next/link"
 import { MdOutlineShoppingCart } from "react-icons/md"
+import { CartContext } from "./CartContext"
+import { useContext } from "react"
 import { Poppins } from "next/font/google"
 
 const poppins = Poppins({
@@ -26,8 +28,8 @@ const ProductBox = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0.5rem;
 
+    border-radius: 0.5rem;
     outline: 1px solid #242424;
     padding: 1rem;
     color: #272829;
@@ -41,12 +43,6 @@ const ProductBox = styled.div`
 
     *{
         margin: 0;
-    }
-
-    .button-box {
-        display: flex;
-        gap: 1rem;
-        color: #272829;
     }
 
     .product-image {
@@ -105,6 +101,8 @@ const ProductBox = styled.div`
 
 
 const NewProducts = ({ products }) => {
+    const { addProduct } = useContext(CartContext)
+
     return (
         <Center>
             <div>
@@ -125,7 +123,7 @@ const NewProducts = ({ products }) => {
                                     <p><span className={poppins.className}>{product.price} ₹</span></p>
                                 </div>
                                 <div className="button-box">
-                                    <Link href="/"><button><MdOutlineShoppingCart />Add to cart</button></Link>
+                                    <Link href="/"><button onClick={() => addProduct(product._id)}><MdOutlineShoppingCart />Add to cart</button></Link>
                                 </div>
                             </div>
 

@@ -1,7 +1,15 @@
 import Link from "next/link"
 import styled from "styled-components"
 import Center from "./Center"
+import { CartContext } from "./CartContext"
+import { useContext } from "react"
 
+import { Montserrat } from "next/font/google"
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+})
 
 const StyledHeader = styled.header`
   background-color: #242424;
@@ -44,18 +52,23 @@ const Wrapper = styled.div`
 `
 
 const Header = () => {
+  const { cartProducts } = useContext(CartContext)
+
+
   return (
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href="/">Gardenify</Logo>
-          <nav>
+          <Logo href="/"><span className={montserrat.className}>Gardenify</span></Logo>
+          <span className={montserrat.className}>
+            <nav>
             <Link href="/">Home</Link>
             <Link href="/allproducts">All Products</Link>
             <Link href="/categories">Categories</Link>
             <Link href="/account">Account</Link>
-            <Link href="/cart">Cart {0}</Link>
+            <Link href="/cart">Cart {cartProducts.length}</Link>
           </nav>
+          </span>
         </Wrapper>
       </Center>
     </StyledHeader>
