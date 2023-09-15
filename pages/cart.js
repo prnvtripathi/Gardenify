@@ -9,6 +9,7 @@ import { FaPlus, FaMinus } from "react-icons/fa"
 
 import { Poppins } from "next/font/google"
 import Button from "@/components/Button"
+import CartForm from "@/components/CartForm"
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -27,8 +28,9 @@ const Box = styled.div`
     outline: 1px solid #242424;
     padding: 1rem;
     color: #272829;
-    box-shadow: 8px 8px 12px #24242450;
+    box-shadow: 8px 8px 16px #24242450;
     transition: all 0.2s ease-in-out;
+    margin: 1rem auto;
 
     .product-box {
         display: flex;
@@ -121,6 +123,24 @@ const Cart = () => {
         total += price
     }
 
+    if (window.location.href.includes('success')) {
+        return (
+            <>
+                <Head>
+                    <title>Success</title>
+                </Head>
+                <Header />
+                <Center>
+                    <Box>
+                        <h2 className={poppins.className}>Your order has been placed successfully</h2>
+                        <p className={poppins.className}>You will receive an email with the order details</p>
+                    </Box>
+                </Center>
+
+            </>
+        )
+    }
+
     return (
         <>
             <Head>
@@ -159,10 +179,7 @@ const Cart = () => {
                     {!!products?.length &&
                         <Box>
                             <h2 className={poppins.className}>Order Information</h2>
-                            <input type="text" placeholder="Name" />
-                            <input type="text" placeholder="Address" />
-                            <input type="text" placeholder="Address 2" />
-                            <button className="checkout-button">Proceed to Payment</button>
+                            <CartForm />
                         </Box>
                     }
                 </ColumnWrapper>
