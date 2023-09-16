@@ -99,8 +99,11 @@ const Box = styled.div`
 `
 
 const Cart = () => {
-    const { cartProducts, addProduct, removeProduct } = useContext(CartContext)
+    const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext)
     const [products, setProducts] = useState([])
+    const [isSuccess, setIsSuccess] = useState(false)
+    const router = useRouter()
+
     useEffect(() => {
         if (cartProducts.length > 0) {
             axios.post('/api/cart', { ids: cartProducts })
@@ -109,6 +112,15 @@ const Cart = () => {
                 })
         }
     }, [])
+
+    useEffect(() => {
+        if (router.asPath.includes('success')) {
+            console.log("Clearing the cart...");
+            clearCart();
+            setIsSuccess(true);
+            console.log("Cart cleared.");
+        }
+    }, [clearCart, router.asPath])
 
     function moreOfThisProduct(id) {
         addProduct(id)
@@ -126,9 +138,8 @@ const Cart = () => {
         total += price
     }
 
-    const router = useRouter()
 
-    if (router.asPath.includes('success')) {
+    if (isSuccess) {
         return (
             <>
                 <Head>
@@ -174,13 +185,17 @@ const Cart = () => {
                                             <p className={poppins.className}>₹{cartProducts.filter(id => id === product._id).length * product.price}</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <h3 className={poppins.className}>Total amount: ₹{total}</h3>
-                                    </div>
+
                                 </>
 
                             ))
                         )}
+                        <div>
+                            {
+                                total === 0 ? null :
+                                    <h3 className={poppins.className}>Total: <span className="total-price">₹{total}</span></h3>
+                            }
+                        </div>
                     </Box>
                     {!!products?.length &&
                         <Box>
