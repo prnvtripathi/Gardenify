@@ -1,3 +1,5 @@
+"use client"
+
 import Center from "@/components/Center"
 import Header from "@/components/Header"
 import Head from "next/head"
@@ -6,10 +8,10 @@ import { CartContext } from "@/components/CartContext"
 import { useContext, useState, useEffect } from "react"
 import axios from "axios"
 import { FaPlus, FaMinus } from "react-icons/fa"
-
 import { Poppins } from "next/font/google"
 import Button from "@/components/Button"
 import CartForm from "@/components/CartForm"
+import { useRouter } from "next/router"
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -31,6 +33,7 @@ const Box = styled.div`
     box-shadow: 8px 8px 16px #24242450;
     transition: all 0.2s ease-in-out;
     margin: 1rem auto;
+    width: 100%;
 
     .product-box {
         display: flex;
@@ -123,7 +126,9 @@ const Cart = () => {
         total += price
     }
 
-    if (window.location.href.includes('success')) {
+    const router = useRouter()
+
+    if (router.asPath.includes('success')) {
         return (
             <>
                 <Head>
@@ -134,6 +139,7 @@ const Cart = () => {
                     <Box>
                         <h2 className={poppins.className}>Your order has been placed successfully</h2>
                         <p className={poppins.className}>You will receive an email with the order details</p>
+                        <Button type="green" onClick={() => router.push('/')}>Go back to home</Button>
                     </Box>
                 </Center>
 
