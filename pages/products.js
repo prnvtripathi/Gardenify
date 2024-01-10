@@ -1,5 +1,7 @@
 import Header from "@/components/Header"
 import Head from "next/head"
+import { CartContext } from "@/components/CartContext"
+import { useContext } from "react"
 import { Montserrat } from "next/font/google"
 import styled from "styled-components"
 import Center from "@/components/Center"
@@ -8,6 +10,7 @@ import { Product } from "@/models/Product"
 import Link from "next/link"
 import { Poppins } from "next/font/google"
 import { MdOutlineShoppingCart } from "react-icons/md"
+import Footer from "@/components/Footer"
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -20,7 +23,7 @@ const montserrat = Montserrat({
 })
 
 const Title = styled.h1`
-    margin: 0;
+    margin: 1rem 0;
     font-weight: bold;
     font-size: 2rem;
 `
@@ -42,6 +45,14 @@ const ProductsGrid = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin: 2rem 0;
+
+    @media screen and (max-width: 850px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 `
 const ProductBox = styled.div`
     display: flex;
@@ -120,6 +131,8 @@ const ProductBox = styled.div`
 `
 
 export default function Products({ products }) {
+    const { addProduct } = useContext(CartContext)
+
     return (
         <>
             <Head>
@@ -132,10 +145,10 @@ export default function Products({ products }) {
                     <ProductsGrid>
                         {products.map(product => (
                             <ProductBox key={product._id}>
-                                <Link href={`/products/${product._id}`}>
+                                <Link href={`/product/${product._id}`}>
                                     <img className="product-image" src={product.images[0]} alt={product.name} width={148} height={148} />
                                 </Link>
-                                <Link href={`/products/${product._id}`}>
+                                <Link href={`/product/${product._id}`}>
                                     <h3 className="product-name">
                                         <span className={poppins.className}>{product.name}</span>
                                     </h3>
@@ -154,6 +167,7 @@ export default function Products({ products }) {
                     </ProductsGrid>
                 </Center>
             </div>
+            <Footer />
         </>
     )
 }

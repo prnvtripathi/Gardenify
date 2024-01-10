@@ -22,6 +22,14 @@ const ProductsGrid = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin: 2rem 0;
+
+    @media screen and (max-width: 860px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 450px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 const ProductBox = styled.div`
     display: flex;
@@ -110,10 +118,10 @@ const NewProducts = ({ products }) => {
                 <ProductsGrid>
                     {products.map(product => (
                         <ProductBox key={product._id}>
-                            <Link href={`/products/${product._id}`}>
+                            <Link href={`/product/${product._id}`}>
                                 <img className="product-image" src={product.images[0]} alt={product.name} width={148} height={148} />
                             </Link>
-                            <Link href={`/products/${product._id}`}>
+                            <Link href={`/product/${product._id}`}>
                                 <h3 className="product-name">
                                     <span className={poppins.className}>{product.name}</span>
                                 </h3>

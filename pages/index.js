@@ -5,6 +5,7 @@ import { Product } from "@/models/Product"
 import { mongooseConnect } from "@/lib/mongoose"
 import { Montserrat } from "next/font/google"
 import NewProducts from "@/components/NewProducts"
+import Footer from "@/components/Footer"
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -21,6 +22,7 @@ const Home = ({ featuredProduct, newProducts }) => {
         <Header />
         <Featured product={featuredProduct} />
         <NewProducts products={newProducts} />
+        <Footer />
       </div>
     </>
 

@@ -1,5 +1,3 @@
-"use client"
-
 import Center from "@/components/Center"
 import Header from "@/components/Header"
 import Head from "next/head"
@@ -12,6 +10,7 @@ import { Poppins } from "next/font/google"
 import Button from "@/components/Button"
 import CartForm from "@/components/CartForm"
 import { useRouter } from "next/router"
+import Footer from "@/components/Footer"
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -20,14 +19,17 @@ const poppins = Poppins({
 
 const ColumnWrapper = styled.div`
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1fr;
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1.3fr 0.7fr;
+    }
     gap: 2.5rem;
     margin: 2.5rem auto;
+    min-height: 32rem;
 `
 
 const Box = styled.div`
     border-radius: 0.5rem;
-    outline: 1px solid #242424;
     padding: 1rem;
     color: #272829;
     box-shadow: 8px 8px 16px #24242450;
@@ -35,12 +37,23 @@ const Box = styled.div`
     margin: 1rem auto;
     width: 100%;
 
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
+
     .product-box {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 1rem 0;
         padding: 0;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            justify-content: start;
+            gap: 0.5rem;
+            margin: 0;
+        }
     }
 
     .qty-box {
@@ -59,6 +72,11 @@ const Box = styled.div`
         display: flex;
         align-items: center;
         gap: 1rem;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            gap: 0.25rem;
+        }
     }
 
     .price-number {
@@ -177,9 +195,9 @@ const Cart = () => {
                                             <h3 className={poppins.className}>{product.name}</h3>
                                         </div>
                                         <div className="qty-box">
-                                            <Button type="red" onClick={() => lessOfThisProduct(product._id)}><FaMinus /></Button>
+                                            <Button type="secondary-alt" onClick={() => lessOfThisProduct(product._id)}><FaMinus /></Button>
                                             <h3 className={poppins.className}>{cartProducts.filter(id => id === product._id).length}</h3>
-                                            <Button type="green" onClick={() => moreOfThisProduct(product._id)}><FaPlus /></Button>
+                                            <Button type="secondary-alt" onClick={() => moreOfThisProduct(product._id)}><FaPlus /></Button>
                                         </div>
                                         <div className="price-number">
                                             <p className={poppins.className}>₹{cartProducts.filter(id => id === product._id).length * product.price}</p>
@@ -205,6 +223,7 @@ const Cart = () => {
                     }
                 </ColumnWrapper>
             </Center>
+            <Footer />
         </>
     )
 }

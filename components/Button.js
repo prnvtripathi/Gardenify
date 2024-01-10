@@ -66,6 +66,19 @@ ${props => props.type === 'secondary' && css`
             }
         `
     }
+
+${props => props.type === 'secondary-alt' && css`
+            background-color: #e3e3e4;
+            border: 1px solid #fff;
+            color: #242424;
+            
+            &:hover {
+            background-color: #242424;
+            color: #e3e3e4;
+            scale: 1;
+            }
+        `
+    }
     
     ${props => props.size === 'l' && css`
             padding: 1rem 1.5rem;
