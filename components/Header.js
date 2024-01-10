@@ -63,7 +63,7 @@ const Header = () => {
           <span className={montserrat.className}>
             <nav>
             <Link href="/">Home</Link>
-            <Link href="/allproducts">All Products</Link>
+            <Link href="/products">All Products</Link>
             <Link href="/categories">Categories</Link>
             <Link href="/account">Account</Link>
             <Link href="/cart">Cart {cartProducts.length}</Link>
